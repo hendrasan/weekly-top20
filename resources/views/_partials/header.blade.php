@@ -2,7 +2,7 @@
     <div class="hero-body">
         <div class="container has-text-centered">
             <h1 class="title is-2"><a href="{{ route('home') }}">Weekly Top 20 <span class="icon is-size-3"><i class="fas fa-music"></i></span></a></h1>
-            <h2 class="subtitle">Your weekly top 20 songs</h2>
+            <h2 class="subtitle">Your weekly top 20 songs, every Monday</h2>
 
             @if (currentRouteName() == 'home')
                 @if (!Auth::check())
