@@ -56,7 +56,7 @@ class AuthSpotifyController extends Controller
       // if it doesn't exist, create a new user
       $new_user = User::create([
         'name' => $user->name,
-        'email' => !empty($user->email) ? $user->email : '',
+        'email' => !empty($user->email) ? $user->email : $user->name . '@spotify.com',
         'avatar' => !empty($user->avatar) ? $user->avatar : '',
         'spotify_id' => $user->id,
         'spotify_access_token' => $user->token,

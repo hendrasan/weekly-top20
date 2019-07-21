@@ -33,7 +33,7 @@ class HomeController extends Controller
       return;
     }
 
-    $latest_period = Chart::max('period');
+    $latest_period = $user->charts()->max('period');
 
     $current_period = $latest_period;
 
