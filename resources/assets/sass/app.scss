@@ -96,3 +96,161 @@ a:hover {
   }
 }
 
+
+.chart__card {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  @media screen and (min-width: 481px) {
+    flex-direction: row;
+  }
+}
+
+.chart__top-section {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.chart__position {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 56px;
+}
+
+
+.chart__number {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.chart__icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+
+  .icon,
+  .chart__icon__number {
+    position: absolute;
+    left: 0;
+  }
+
+  .icon {
+    font-size: 40px;
+    top: 0;
+
+    &.up {
+      color: #65D36E;
+    }
+
+    &.down {
+      color: red;
+      top: 6px;
+    }
+  }
+
+  .chart__icon__number {
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    bottom: 10px;
+    font-size: 14px;
+  }
+}
+
+.chart__image {
+  flex: 1;
+  margin-left: 1rem;
+
+  @media screen and (min-width: 481px) {
+    max-width: 150px;
+    margin-right: 1rem;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.chart__track {
+  text-align: center;
+  padding: 1rem 0;
+
+  @media screen and (min-width: 481px) {
+    text-align: left;
+    flex: 1;
+    padding: 0;
+  }
+}
+
+.chart__meta {
+  color: #1EAFF0;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: .5rem;
+}
+
+.chart__title {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 1.2;
+  margin-bottom: .4rem;
+  font-family: $font-family-serif;
+
+  a {
+    color: #323334;
+
+    &:hover {
+      color: #3f8445;
+    }
+  }
+}
+
+.chart__artist {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.chart__additional {
+  margin-top: 1rem;
+  font-family: $font-family-serif;
+  color: #adadad;
+}
+
+.chart__actions {
+  align-self: center;
+}
+
+.btn-play {
+  display: inline-block;
+  border: 2px solid #65D36E;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  line-height: 46px;
+  text-align: center;
+  font-size: 22px;
+  background: #fff;
+  color: #65D36E;
+  transition: all ease .3s;
+
+  &:hover,
+  &:focus {
+    background: #65D36E;
+    color: #fff;
+  }
+
+  .icon {
+    margin-left: 4px;
+  }
+}

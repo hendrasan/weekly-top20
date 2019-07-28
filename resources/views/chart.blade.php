@@ -23,93 +23,50 @@
             </div>
           </div>
 
-          <div class="box">
-            <div class="columns is-mobile">
-              <div class="column is-1">Last Week</div>
-              <div class="column is-1">This Week</div>
-              <div class="column is-1"></div>
-              <div class="column is-narrow"></div>
-              <div class="column is-narrow"></div>
-              <div class="column"></div>
-              <div class="column is-1">PEAK</div>
-              <div class="column is-1">Weeks on Chart</div>
-            </div>
-          </div>
+          <div class="chart">
+            @foreach ($chart as $index => $item)
+              <?php $position = $index + 1; ?>
+              <div class="chart__card">
+                <div class="chart__top-section">
+                  <div class="chart__position">
+                    <span class="chart__number">{{ $position }}</span>
+                    @if (!empty($item->last_position) && $position != $item->last_position)
+                      <div class="chart__icon">
+                        <i class="icon im {{ $position < $item->last_position ? 'im-care-up up' : 'im-care-down down' }}"></i>
+                        <span class="chart__icon__number">{{ abs($position - $item->last_position) }}</span>
+                      </div>
+                    @endif
+                  </div>
+                  <div class="chart__image">
+                    <img src="{{ json_decode($item->track_data)->album->images[1]->url }}" alt="{{ $item->track_name }}">
+                  </div>
+                </div>
+                <div class="chart__track">
+                  <p class="chart__meta">
+                    {{ $item->periods_on_chart }} week{{ $item->periods_on_chart > 1 ? 's' : '' }} on chart
+                  </p>
 
-          @foreach ($chart as $index => $item)
-            <?php $position = $index + 1; ?>
-            <div class="box">
-              <div class="columns is-mobile">
-                <div class="column is-1 has-text-grey has-text-centered" style="min-width: 70px;">
-                  <div class="is-size-5" style="color: #aaa">
-                    <span>{{ $item->last_position ?: '-' }}</span>
-                  </div>
+                  <p class="chart__title"><a href="{{ json_decode($item->track_data)->external_urls->spotify }}" target="_blank">{{ $item->track_name }}</a></p>
+                  <p class="chart__artist">by {{ $item->track_artist }}</p>
+                  
+                  <p class="chart__additional">
+                    @if (empty($item->last_position))
+                      New entry
+                    @else
+                      @if ($position > 1)
+                        Peaked at number {{ $item->peak_position }}
+                      @endif
+                    @endif
+                  </p>
                 </div>
-                <div class="column is-1 has-text-grey has-text-centered" style="min-width: 70px;">
-                  <div class="is-size-5" style="color: #000">
-                    <span>{{ $position }}</span>
-                  </div>
-                  {{-- <div class="is-size-7">
-                    <span><i class="fas {{ getArrowIcon($position, $item->last_position) }}"></i></span>
-                    {{ $item->last_position ? '(' . $item->last_position . ')' : ($item->is_reentry ? 'RE' : 'NEW') }}
-                  </div> --}}
+                <div class="chart__actions">
+                  <a href="{{ json_decode($item->track_data)->external_urls->spotify }}" target="_blank" class="btn-play">
+                    <i class="icon fas fa-play"></i>
+                  </a>
                 </div>
-                <div class="column is-1">
-                  <div class="is-size-5">
-                    <span>
-                      <i class="fas {{ getArrowIcon($position, $item->last_position) }}"></i>
-                      {{-- @if (empty($item->last_position))
-                        {{ $item->is_reentry ? 'RE' : 'NEW' }}
-                      @else
-                        @if ($item->last_position > $position)
-                          {{ $item->last_position - $position }}
-                        @elseif ($item->last_position < $position)
-                          {{ $position - $item->last_position }}
-                        @endif
-                      @endif --}}
-                    </span>
-                  </div>
-                </div>
-                <div class="column is-narrow">
-                  <figure class="image is-48x48">
-                    <img src="{{ json_decode($item->track_data)->album->images[2]->url }}" alt="{{ $item->track_name }}">
-                  </figure>
-                </div>
-                <div class="column is-narrow">
-                  <a href="{{ json_decode($item->track_data)->external_urls->spotify }}" target="_blank"><i class="fas fa-play"></i></a>
-                </div>
-                <div class="column">
-                  <div class="title is-5 has-text-weight-normal">
-                    <a href="{{ json_decode($item->track_data)->external_urls->spotify }}" target="_blank">{{ $item->track_name }}</a>
-                  </div>
-                  <div class="subtitle is-6 has-text-grey">
-                    {{ $item->track_artist }}
-                  </div>
-                </div>
-                <div class="column is-1 has-text-centered">
-                  {{-- <span class="is-size-7">PEAK</span> --}}
-                  <div class="is-size-5">
-                    <span>{{ $item->peak_position }}</span>
-                  </div>
-                </div>
-                <div class="column is-1 has-text-centered">
-                  {{-- <span class="is-size-7">WEEKS ON CHART</span> --}}
-                  <div class="is-size-5">
-                    <span>{{ $item->periods_on_chart }}</span>
-                  </div>
-                </div>
-
-                {{-- <div class="column is-5 has-text-centered">
-                  <span class="is-size-7">Chart Runs</span>
-                  <div class="is-size-5">
-                    @foreach ($item->chart_runs as $cr)
-                      <span>{{ $cr->position }}</span>
-                    @endforeach
-                  </div>
-                </div> --}}
               </div>
-            </div>
-          @endforeach
+            @endforeach
+          </div>
         </div>
       </div>
     </div>
