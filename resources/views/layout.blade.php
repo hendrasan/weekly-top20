@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Bree+Serif&display:swap" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
 
   <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ filemtime(public_path() . '/css/app.css') }}">
 

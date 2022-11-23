@@ -31,8 +31,20 @@
                   <div class="chart__position">
                     <span class="chart__number">{{ $position }}</span>
                     @if (!empty($item->last_position) && $position != $item->last_position)
-                      <div class="chart__icon">
-                        <i class="icon im {{ $position < $item->last_position ? 'im-care-up up' : 'im-care-down down' }}"></i>
+                      <div class="chart__icon {{ $position < $item->last_position ? 'has-text-success' : 'has-text-danger' }}">
+                        @if ($position < $item->last_position)
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="19" x2="12" y2="5" />
+                            <polyline points="5 12 12 5 19 12" />
+                          </svg>
+                        @else
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <polyline points="19 12 12 19 5 12" />
+                          </svg>
+                        @endif
                         <span class="chart__icon__number">{{ abs($position - $item->last_position) }}</span>
                       </div>
                     @endif
@@ -48,7 +60,7 @@
 
                   <p class="chart__title"><a href="{{ json_decode($item->track_data)->external_urls->spotify }}" target="_blank">{{ $item->track_name }}</a></p>
                   <p class="chart__artist">by {{ $item->track_artist }}</p>
-                  
+
                   <p class="chart__additional">
                     @if (empty($item->last_position))
                       New entry

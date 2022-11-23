@@ -132,39 +132,45 @@ a:hover {
   font-size: 3rem;
 }
 
+// .chart__icon {
+//   position: relative;
+//   width: 40px;
+//   height: 40px;
+
+//   .icon,
+//   .chart__icon__number {
+//     position: absolute;
+//     left: 0;
+//   }
+
+//   .icon {
+//     font-size: 40px;
+//     top: 0;
+
+//     &.up {
+//       color: #65D36E;
+//     }
+
+//     &.down {
+//       color: red;
+//       top: 6px;
+//     }
+//   }
+
+//   .chart__icon__number {
+//     color: #fff;
+//     text-align: center;
+//     width: 100%;
+//     font-weight: bold;
+//     bottom: 10px;
+//     font-size: 14px;
+//   }
+// }
+
 .chart__icon {
-  position: relative;
-  width: 40px;
-  height: 40px;
-
-  .icon,
-  .chart__icon__number {
-    position: absolute;
-    left: 0;
-  }
-
-  .icon {
-    font-size: 40px;
-    top: 0;
-
-    &.up {
-      color: #65D36E;
-    }
-
-    &.down {
-      color: red;
-      top: 6px;
-    }
-  }
-
-  .chart__icon__number {
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    font-weight: bold;
-    bottom: 10px;
-    font-size: 14px;
-  }
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }
 
 .chart__image {
